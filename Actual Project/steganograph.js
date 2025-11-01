@@ -670,19 +670,22 @@ function uploadExtractSrc(inputForExtracting){
     try {
         var givenCanvas = document.getElementById("extractSrcImgCanvas");
         var givenImageHolder = document.getElementById("extractSrcInput");
-        
+
         if (!givenImageHolder.files || !givenImageHolder.files[0]) {
             alert("Please select an image file first!");
             return;
         }
-        
+
+        // Update file info
+        updateFileInfo('extractSrcInput', 'extractFileInfo', 'extractFileName', 'extractFileSize', 'extractStatus');
+
         givenImage = new SimpleImage(givenImageHolder);
         givenImage.drawTo(givenCanvas);
-        
+
         // Show canvas and hide overlay
         givenCanvas.style.display = "block";
         givenCanvas.nextElementSibling.style.display = "none";
-        
+
         console.log("Extraction source image uploaded successfully, dimensions:", givenImage.getWidth(), "x", givenImage.getHeight());
     } catch (error) {
         console.error("Error uploading extraction source image:", error);
@@ -704,7 +707,7 @@ function doExtraction(){
         console.log("Extracting text from image...");
         try {
             var extractedText = extractText();
-            const extractedTextElement = document.getElementById("extractedText");
+            const extractedTextElement = document.getElementById("textResult");
             if (extractedTextElement) {
                 extractedTextElement.innerHTML = extractedText;
                 console.log("Text extracted successfully:", extractedText);
@@ -1261,23 +1264,46 @@ function removeCoverFile() {
     const input = document.getElementById('inthisIMG');
     const fileInfo = document.getElementById('coverFileInfo');
     const status = document.getElementById('coverStatus');
-    
+
     input.value = '';
     fileInfo.style.display = 'none';
-    
+
     if (status) {
         status.querySelector('.status-text').textContent = 'Ready';
         status.querySelector('.status-dot').className = 'status-dot';
     }
-    
+
     // Hide canvas and show overlay
     const canvas = document.getElementById('inthisIMGcanvas');
     if (canvas) {
         canvas.style.display = 'none';
         canvas.nextElementSibling.style.display = 'flex';
     }
-    
+
     console.log('Cover file removed');
+}
+
+function removeExtractFile() {
+    const input = document.getElementById('extractSrcInput');
+    const fileInfo = document.getElementById('extractFileInfo');
+    const status = document.getElementById('extractStatus');
+
+    input.value = '';
+    fileInfo.style.display = 'none';
+
+    if (status) {
+        status.querySelector('.status-text').textContent = 'Ready';
+        status.querySelector('.status-dot').className = 'status-dot';
+    }
+
+    // Hide canvas and show overlay
+    const canvas = document.getElementById('extractSrcImgCanvas');
+    if (canvas) {
+        canvas.style.display = 'none';
+        canvas.nextElementSibling.style.display = 'flex';
+    }
+
+    console.log('Extract file removed');
 }
 
 // Enhanced Upload Functions
