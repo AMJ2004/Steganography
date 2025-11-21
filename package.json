@@ -1,17 +1,35 @@
 {
-  "name": "steganography-master",
+  "name": "steganography-tool",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-
+  "description": "A responsive steganography web application to hide and extract content from images using LSB techniques",
+  "main": "index.html",
+  "keywords": [
+    "steganography",
+    "image encryption",
+    "hide content",
+    "LSB technique",
+    "web application",
+    "responsive design"
+  ],
+  "author": "Aishwarya Jagdale - AS Infotech",
+  "license": "ISC",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "start": "nodemon main.js",
+    "start": "http-server -p 8000 -c-1",
+    "dev": "http-server -p 8000 -c-1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
-
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AMJ2004/Steganography"
+  },
+  "bugs": {
+    "url": "https://github.com/AMJ2004/Steganography/issues"
+  },
+  "homepage": "https://github.com/AMJ2004/Steganography#readme"
 }

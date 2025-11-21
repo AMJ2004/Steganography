@@ -2,17 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>STEGANOGRAPHY By AS Infotech</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+  <title>STEGANOGRAPHY - Hide Secrets in Images | By AS Infotech</title>
+  
+  <!-- Responsive Meta Tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="description" content="Free online steganography tool to hide secrets within images using advanced LSB techniques. Secure, fast, and responsive on all devices.">
+  <meta name="keywords" content="steganography, hide image, LSB, image encryption, secret message, hide text in image, online steganography tool">
+  <meta name="author" content="Aishwarya Jagdale - AS Infotech">
+  
+  <!-- Mobile Web App Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Steganography Tool">
+  
+  <!-- Theme Color for Mobile Browsers -->
+  <meta name="theme-color" content="#2dc997">
+  <meta name="msapplication-navbutton-color" content="#2dc997">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#2dc997">
 
-  <!-- Favicons -->
-  <link href="static/Photos/encryptIcon.png" rel="icon">
+  <!-- Favicons - Multiple Sizes for Different Devices -->
+  <link rel="icon" type="image/png" sizes="32x32" href="static/Photos/encryptIcon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="static/Photos/encryptIcon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="static/Photos/encryptIcon.png">
+  <link rel="shortcut icon" href="static/Photos/encryptIcon.png">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+  <!-- Preconnect to External Resources for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
+  <!-- Google Fonts - Optimized Loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,50 +43,102 @@
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
 
-  <!-- Main Stylesheet File -->
+  <!-- Main Stylesheet Files -->
   <link href="css/style.css" rel="stylesheet">
-  <link href="Actual Project/styles.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
 
-  <script type="text/javascript" src="Actual Project/library.js"></script>
-  <script type="text/javascript" src="Actual Project/steganograph.js"></script>
+  <!-- Steganography Libraries -->
+  <script type="text/javascript" src="library.js"></script>
+  <script type="text/javascript" src="steganograph.js"></script>
+  
+  <!-- Inline Critical CSS for Performance (Optional) -->
+  <style>
+    /* Prevent Flash of Unstyled Content */
+    body { opacity: 0; transition: opacity 0.3s ease; }
+    body.loaded { opacity: 1; }
+    
+    /* Critical Loading Spinner */
+    .page-loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.3s ease;
+    }
+    .page-loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #2dc997;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 
-<body onload="loadCover()">
+<body>
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+  </div>
 
   <!--==========================
-  Header
+  Header - Responsive
   ============================-->
   <header id="header">
     <div class="container">
       <div id="logo" class="pull-left">
-        <h1><a href="#hero">🔐 Steganography</a></h1>
+        <h1><a href="#hero" aria-label="Steganography Tool Home">🔐 Steganography</a></h1>
       </div>
 
-      <nav id="nav-menu-container">
+      <nav id="nav-menu-container" role="navigation" aria-label="Main navigation">
         <ul class="nav-menu">
-          <li><a href="#">Home</a></li>
-          <li><a href="https://github.com/AMJ2004" target="_blank">GitHub</a></li>
-          <li><a href="https://www.linkedin.com/in/aishwarya-jagdale-089921267/" target="_blank">LinkedIn</a></li>
-          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#hero" aria-label="Home">Home</a></li>
+          <li><a href="https://github.com/AMJ2004" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">
+            <i class="fab fa-github" aria-hidden="true"></i> GitHub
+          </a></li>
+          <li><a href="https://www.linkedin.com/in/aishwarya-jagdale-089921267/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
+            <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+          </a></li>
+          <li><a href="#contact" aria-label="Contact us">Contact Us</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
       
       <!-- Dark Mode Toggle -->
       <div class="theme-toggle">
         <button id="darkModeToggle" class="theme-btn" title="Toggle Dark Mode" aria-label="Toggle dark mode">
-          <i class="fa fa-moon-o" id="themeIcon"></i>
+          <i class="fa fa-moon-o" id="themeIcon" aria-hidden="true"></i>
         </button>
       </div>
+      
+      <!-- Mobile Menu Toggle Button -->
+      <button id="mobile-nav-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+      </button>
     </div>
   </header><!-- #header -->
 
   <!--==========================
-    Hero Section
+    Hero Section - Responsive
   ============================-->
-  <section id="hero">
+  <section id="hero" role="banner">
     <div class="hero-container">
       <!-- Animated Background -->
-      <div class="hero-bg-animation">
+      <div class="hero-bg-animation" aria-hidden="true">
         <div class="floating-shapes">
           <div class="shape shape-1"></div>
           <div class="shape shape-2"></div>
@@ -81,43 +154,40 @@
         <!-- Feature Highlights -->
         <div class="hero-features">
           <div class="feature-highlight">
-            <i class="fa fa-shield"></i>
+            <i class="fa fa-shield" aria-hidden="true"></i>
             <span>Secure</span>
           </div>
           <div class="feature-highlight">
-            <i class="fa fa-bolt"></i>
+            <i class="fa fa-bolt" aria-hidden="true"></i>
             <span>Fast</span>
           </div>
           <div class="feature-highlight">
-            <i class="fa fa-mobile"></i>
+            <i class="fa fa-mobile" aria-hidden="true"></i>
             <span>Responsive</span>
           </div>
         </div>
         
         <div class="hero-buttons">
-          <button class="hero-btn primary" onclick="console.log('Get Started clicked'); scrollToSection('main-content');" type="button">
-            <i class="fa fa-rocket"></i> Get Started
+          <button class="hero-btn primary" onclick="scrollToSection('main-content')" type="button" aria-label="Get started with steganography">
+            <i class="fa fa-rocket" aria-hidden="true"></i> Get Started
           </button>
-          <button class="hero-btn secondary" onclick="console.log('Learn More clicked'); scrollToSection('how-it-works');" type="button">
-            <i class="fa fa-info-circle"></i> Learn More
-          </button>
-          <button class="hero-btn secondary" onclick="testScroll(); console.log('Test scroll clicked');" type="button" style="background: #f59e0b; margin-left: 10px;">
-            <i class="fa fa-bug"></i> Test Scroll
+          <button class="hero-btn secondary" onclick="scrollToSection('how-it-works')" type="button" aria-label="Learn how it works">
+            <i class="fa fa-info-circle" aria-hidden="true"></i> Learn More
           </button>
         </div>
         
         <!-- Stats Counter -->
-        <div class="hero-stats">
+        <div class="hero-stats" role="region" aria-label="Statistics">
           <div class="stat-item">
-            <div class="stat-number" data-target="1000">0</div>
+            <div class="stat-number" data-target="1000" aria-label="1000 images processed">0</div>
             <div class="stat-label">Images Processed</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number" data-target="500">0</div>
+            <div class="stat-number" data-target="500" aria-label="500 secrets hidden">0</div>
             <div class="stat-label">Secrets Hidden</div>
           </div>
           <div class="stat-item">
-            <div class="stat-number" data-target="99">0</div>
+            <div class="stat-number" data-target="99" aria-label="99 percent success rate">0</div>
             <div class="stat-label">Success Rate %</div>
           </div>
         </div>
@@ -126,19 +196,19 @@
   </section><!-- #hero -->
 
   <!--==========================
-    How It Works Section
+    How It Works Section - Responsive
   ============================-->
-  <section id="how-it-works" class="section-padding">
+  <section id="how-it-works" class="section-padding" role="region" aria-labelledby="how-it-works-title">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">How It Works</h2>
+        <h2 id="how-it-works-title" class="section-title">How It Works</h2>
         <p class="section-description">Simple three-step process to hide and extract your secrets</p>
       </div>
       
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-6">
           <div class="feature-card">
-            <div class="feature-icon">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fa fa-upload"></i>
             </div>
             <h3>Upload Images</h3>
@@ -146,9 +216,9 @@
           </div>
         </div>
         
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-6">
           <div class="feature-card">
-            <div class="feature-icon">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fa fa-magic"></i>
             </div>
             <h3>Process & Hide</h3>
@@ -156,9 +226,9 @@
           </div>
         </div>
         
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-12">
           <div class="feature-card">
-            <div class="feature-icon">
+            <div class="feature-icon" aria-hidden="true">
               <i class="fa fa-download"></i>
             </div>
             <h3>Download Result</h3>
@@ -170,83 +240,83 @@
   </section><!-- #how-it-works -->
 
   <!--==========================
-    Main Content Section
+    Main Content Section - Responsive
   ============================-->
-  <section id="main-content" class="section-padding">
+  <section id="main-content" class="section-padding" role="main" aria-labelledby="main-content-title">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Steganography Tool</h2>
+        <h2 id="main-content-title" class="section-title">Steganography Tool</h2>
         <p class="section-description">Choose your operation mode and content type to get started</p>
       </div>
 
       <!-- Mode Selector -->
-      <div class="mode-selector">
+      <div class="mode-selector" role="tablist" aria-label="Operation mode selector">
         <div class="mode-tabs">
-          <button class="mode-tab active" onclick="switchMode('hide')">
-            <i class="fa fa-eye-slash"></i> Hide Content
+          <button class="mode-tab active" onclick="switchMode('hide')" role="tab" aria-selected="true" aria-controls="hideContext" id="hide-tab">
+            <i class="fa fa-eye-slash" aria-hidden="true"></i> Hide Content
           </button>
-          <button class="mode-tab" onclick="switchMode('extract')">
-            <i class="fa fa-eye"></i> Extract Content
+          <button class="mode-tab" onclick="switchMode('extract')" role="tab" aria-selected="false" aria-controls="extractContext" id="extract-tab">
+            <i class="fa fa-eye" aria-hidden="true"></i> Extract Content
           </button>
         </div>
       </div>
 
       <!-- Content Type Selector -->
-      <div class="content-type-selector">
+      <div class="content-type-selector" role="tablist" aria-label="Content type selector">
         <div class="type-tabs">
-          <button class="type-tab active" onclick="switchContentType('image')">
-            <i class="fa fa-image"></i> Image
+          <button class="type-tab active" onclick="switchContentType('image')" role="tab" aria-selected="true" id="image-type-tab">
+            <i class="fa fa-image" aria-hidden="true"></i> Image
           </button>
-          <button class="type-tab" onclick="switchContentType('text')">
-            <i class="fa fa-font"></i> Text
+          <button class="type-tab" onclick="switchContentType('text')" role="tab" aria-selected="false" id="text-type-tab">
+            <i class="fa fa-font" aria-hidden="true"></i> Text
           </button>
         </div>
       </div>
 
       <!-- Hide Mode Content -->
-      <div id="hideContext" class="mode-content active">
+      <div id="hideContext" class="mode-content active" role="tabpanel" aria-labelledby="hide-tab">
         <!-- Progress Indicator -->
-        <div class="progress-container" id="hideProgress" style="display: none;">
+        <div class="progress-container" id="hideProgress" style="display: none;" role="status" aria-live="polite">
           <div class="progress-bar">
-            <div class="progress-fill" id="hideProgressFill"></div>
+            <div class="progress-fill" id="hideProgressFill" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           <div class="progress-text" id="hideProgressText">Processing...</div>
         </div>
         
         <div class="row">
           <!-- Content to Hide -->
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12">
             <div class="upload-card">
               <div class="upload-header">
-                <i class="fa fa-upload"></i>
+                <i class="fa fa-upload" aria-hidden="true"></i>
                 <h3>Content to Hide</h3>
-                <div class="upload-status" id="hideStatus">
-                  <span class="status-dot"></span>
+                <div class="upload-status" id="hideStatus" role="status">
+                  <span class="status-dot" aria-hidden="true"></span>
                   <span class="status-text">Ready</span>
                 </div>
               </div>
               
               <!-- Image Upload -->
               <div id="imageUpload" class="upload-area">
-                <canvas class="upload-canvas" id="hideIMGcanvas"></canvas>
+                <canvas class="upload-canvas" id="hideIMGcanvas" role="img" aria-label="Image to hide preview"></canvas>
                 <div class="upload-overlay">
-                  <div class="upload-icon-wrapper">
+                  <div class="upload-icon-wrapper" aria-hidden="true">
                     <i class="fa fa-cloud-upload"></i>
                   </div>
                   <p>Click to upload image</p>
                   <div class="upload-hint">Supports PNG, JPG, JPEG</div>
                 </div>
-                <input type="file" multiple="false" accept="image/*" id="hideIMG" class="file-input" onchange="uploadHIDE()">
+                <input type="file" multiple="false" accept="image/*" id="hideIMG" class="file-input" onchange="uploadHIDE()" aria-label="Upload image to hide">
                 
                 <!-- File Info -->
                 <div class="file-info" id="hideFileInfo" style="display: none;">
                   <div class="file-details">
-                    <i class="fa fa-image"></i>
+                    <i class="fa fa-image" aria-hidden="true"></i>
                     <span class="file-name" id="hideFileName"></span>
                     <span class="file-size" id="hideFileSize"></span>
                   </div>
-                  <button class="remove-file" onclick="removeHideFile()">
-                    <i class="fa fa-times"></i>
+                  <button class="remove-file" onclick="removeHideFile()" aria-label="Remove uploaded image">
+                    <i class="fa fa-times" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
@@ -254,15 +324,15 @@
               <!-- Text Input -->
               <div id="textInput" class="text-input-area" style="display: none;">
                 <div class="text-input-header">
-                  <i class="fa fa-font"></i>
+                  <i class="fa fa-font" aria-hidden="true"></i>
                   <span>Secret Message</span>
                   <div class="text-counter">
-                    <span id="charCount">0</span> characters
+                    <span id="charCount" aria-live="polite">0</span> characters
                   </div>
                 </div>
-                <textarea id="textToHide" placeholder="Enter your secret message here..." rows="6"></textarea>
+                <textarea id="textToHide" placeholder="Enter your secret message here..." rows="6" aria-label="Enter secret message to hide"></textarea>
                 <div class="text-security">
-                  <i class="fa fa-lock"></i>
+                  <i class="fa fa-lock" aria-hidden="true"></i>
                   <span>Your message is encrypted using LSB technique</span>
                 </div>
               </div>
@@ -270,36 +340,36 @@
           </div>
 
           <!-- Cover Image -->
-          <div class="col-md-6">
+          <div class="col-md-6 col-sm-12">
             <div class="upload-card">
               <div class="upload-header">
-                <i class="fa fa-shield"></i>
+                <i class="fa fa-shield" aria-hidden="true"></i>
                 <h3>Cover Image</h3>
-                <div class="upload-status" id="coverStatus">
-                  <span class="status-dot"></span>
+                <div class="upload-status" id="coverStatus" role="status">
+                  <span class="status-dot" aria-hidden="true"></span>
                   <span class="status-text">Ready</span>
                 </div>
               </div>
               <div class="upload-area">
-                <canvas class="upload-canvas" id="inthisIMGcanvas"></canvas>
+                <canvas class="upload-canvas" id="inthisIMGcanvas" role="img" aria-label="Cover image preview"></canvas>
                 <div class="upload-overlay">
-                  <div class="upload-icon-wrapper">
+                  <div class="upload-icon-wrapper" aria-hidden="true">
                     <i class="fa fa-cloud-upload"></i>
                   </div>
                   <p>Click to upload cover image</p>
                   <div class="upload-hint">This image will hide your content</div>
                 </div>
-                <input type="file" multiple="false" accept="image/*" id="inthisIMG" class="file-input" onchange="uploadINSIDE(this)">
+                <input type="file" multiple="false" accept="image/*" id="inthisIMG" class="file-input" onchange="uploadINSIDE(this)" aria-label="Upload cover image">
                 
                 <!-- File Info -->
                 <div class="file-info" id="coverFileInfo" style="display: none;">
                   <div class="file-details">
-                    <i class="fa fa-image"></i>
+                    <i class="fa fa-image" aria-hidden="true"></i>
                     <span class="file-name" id="coverFileName"></span>
                     <span class="file-size" id="coverFileSize"></span>
                   </div>
-                  <button class="remove-file" onclick="removeCoverFile()">
-                    <i class="fa fa-times"></i>
+                  <button class="remove-file" onclick="removeCoverFile()" aria-label="Remove cover image">
+                    <i class="fa fa-times" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
@@ -309,53 +379,49 @@
 
         <!-- Process Button -->
         <div class="text-center mt-4">
-          <button onclick="dothestuff()" class="process-btn" id="hideProcessBtn">
-            <i class="fa fa-magic"></i>
+          <button onclick="dothestuff()" class="process-btn" id="hideProcessBtn" aria-label="Process and hide content">
+            <i class="fa fa-magic" aria-hidden="true"></i>
             <span>Hide Content</span>
-            <div class="btn-loading" id="hideBtnLoading" style="display: none;">
+            <div class="btn-loading" id="hideBtnLoading" style="display: none;" role="status" aria-label="Processing">
               <div class="spinner"></div>
             </div>
-          </button>
-          <button onclick="testDownload()" class="process-btn" style="margin-left: 10px; background: #f59e0b;">
-            <i class="fa fa-bug"></i>
-            <span>Test Download</span>
           </button>
         </div>
 
         <!-- Results Section -->
-        <div id="resultsSection" class="results-section" style="display: none;">
+        <div id="resultsSection" class="results-section" style="display: none;" role="region" aria-labelledby="results-title">
           <div class="results-header">
-            <h3><i class="fa fa-check-circle"></i> Processing Complete!</h3>
+            <h3 id="results-title"><i class="fa fa-check-circle" aria-hidden="true"></i> Processing Complete!</h3>
             <p>Your content has been successfully hidden. Download the results below.</p>
           </div>
           
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-12">
               <div class="result-card">
                 <div class="result-header">
-                  <h3><i class="fa fa-image"></i> Steganographed Image</h3>
-                  <div class="result-badge success">Ready</div>
+                  <h3><i class="fa fa-image" aria-hidden="true"></i> Steganographed Image</h3>
+                  <div class="result-badge success" role="status">Ready</div>
                 </div>
                 <div class="result-canvas-container">
-                  <canvas class="result-canvas" id="resultCanvas"></canvas>
+                  <canvas class="result-canvas" id="resultCanvas" role="img" aria-label="Steganographed image result"></canvas>
                 </div>
-                <button type="button" onClick="download()" class="download-btn">
-                  <i class="fa fa-download"></i> Download
+                <button type="button" onClick="download()" class="download-btn" aria-label="Download steganographed image">
+                  <i class="fa fa-download" aria-hidden="true"></i> Download
                 </button>
               </div>
             </div>
             
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-12">
               <div class="result-card">
                 <div class="result-header">
-                  <h3><i class="fa fa-eye"></i> Extracted Preview</h3>
-                  <div class="result-badge info">Preview</div>
+                  <h3><i class="fa fa-eye" aria-hidden="true"></i> Extracted Preview</h3>
+                  <div class="result-badge info" role="status">Preview</div>
                 </div>
                 <div class="result-canvas-container">
-                  <canvas class="result-canvas" id="extractionCanvas"></canvas>
+                  <canvas class="result-canvas" id="extractionCanvas" role="img" aria-label="Extracted content preview"></canvas>
                 </div>
-                <button type="button" onClick="downloadOriginalIMG()" class="download-btn">
-                  <i class="fa fa-download"></i> Download Original
+                <button type="button" onClick="downloadOriginalIMG()" class="download-btn" aria-label="Download original extracted image">
+                  <i class="fa fa-download" aria-hidden="true"></i> Download Original
                 </button>
               </div>
             </div>
@@ -364,38 +430,38 @@
       </div>
 
       <!-- Extract Mode Content -->
-      <div id="extractContext" class="mode-content">
+      <div id="extractContext" class="mode-content" role="tabpanel" aria-labelledby="extract-tab">
         <div class="row">
-          <div class="col-md-8 col-md-offset-2">
+          <div class="col-md-8 col-md-offset-2 col-sm-12">
             <div class="upload-card">
               <div class="upload-header">
-                <i class="fa fa-search"></i>
+                <i class="fa fa-search" aria-hidden="true"></i>
                 <h3>Image to Extract From</h3>
-                <div class="upload-status" id="extractStatus">
-                  <span class="status-dot"></span>
+                <div class="upload-status" id="extractStatus" role="status">
+                  <span class="status-dot" aria-hidden="true"></span>
                   <span class="status-text">Ready</span>
                 </div>
               </div>
               <div class="upload-area large">
-                <canvas class="upload-canvas" id="extractIMGcanvas"></canvas>
+                <canvas class="upload-canvas" id="extractIMGcanvas" role="img" aria-label="Image to extract from preview"></canvas>
                 <div class="upload-overlay">
-                  <div class="upload-icon-wrapper">
+                  <div class="upload-icon-wrapper" aria-hidden="true">
                     <i class="fa fa-cloud-upload"></i>
                   </div>
                   <p>Click to upload image</p>
                   <div class="upload-hint">Upload the image containing hidden content</div>
                 </div>
-                <input type="file" multiple="false" accept="image/*" id="extractIMG" class="file-input" onchange="uploadExtractSrc()">
+                <input type="file" multiple="false" accept="image/*" id="extractIMG" class="file-input" onchange="uploadExtractSrc()" aria-label="Upload image to extract from">
                 
                 <!-- File Info -->
                 <div class="file-info" id="extractFileInfo" style="display: none;">
                   <div class="file-details">
-                    <i class="fa fa-image"></i>
+                    <i class="fa fa-image" aria-hidden="true"></i>
                     <span class="file-name" id="extractFileName"></span>
                     <span class="file-size" id="extractFileSize"></span>
                   </div>
-                  <button class="remove-file" onclick="removeExtractFile()">
-                    <i class="fa fa-times"></i>
+                  <button class="remove-file" onclick="removeExtractFile()" aria-label="Remove uploaded image">
+                    <i class="fa fa-times" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
@@ -405,50 +471,46 @@
 
         <!-- Extract Button -->
         <div class="text-center mt-4">
-          <button onclick="doExtraction()" class="process-btn" id="extractProcessBtn">
-            <i class="fa fa-search"></i>
+          <button onclick="doExtraction()" class="process-btn" id="extractProcessBtn" aria-label="Extract hidden content">
+            <i class="fa fa-search" aria-hidden="true"></i>
             <span>Extract Content</span>
-            <div class="btn-loading" id="extractBtnLoading" style="display: none;">
+            <div class="btn-loading" id="extractBtnLoading" style="display: none;" role="status" aria-label="Extracting">
               <div class="spinner"></div>
             </div>
-          </button>
-          <button onclick="debugExtraction()" class="process-btn" style="margin-left: 10px; background: #f59e0b;">
-            <i class="fa fa-bug"></i>
-            <span>Debug Extraction</span>
           </button>
         </div>
 
         <!-- Extraction Results -->
-        <div id="extractionResults" class="results-section" style="display: none;">
+        <div id="extractionResults" class="results-section" style="display: none;" role="region" aria-labelledby="extraction-results-title">
           <div class="results-header">
-            <h3><i class="fa fa-search"></i> Extraction Complete!</h3>
+            <h3 id="extraction-results-title"><i class="fa fa-search" aria-hidden="true"></i> Extraction Complete!</h3>
             <p>Content has been successfully extracted from the image.</p>
           </div>
           
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-12">
               <div class="result-card">
                 <div class="result-header">
-                  <h3><i class="fa fa-image"></i> Extracted Image</h3>
-                  <div class="result-badge success">Ready</div>
+                  <h3><i class="fa fa-image" aria-hidden="true"></i> Extracted Image</h3>
+                  <div class="result-badge success" role="status">Ready</div>
                 </div>
                 <div class="result-canvas-container">
-                  <canvas class="result-canvas" id="imageResult"></canvas>
+                  <canvas class="result-canvas" id="imageResult" role="img" aria-label="Extracted image result"></canvas>
                 </div>
-                <button type="button" onClick="downloadExtractedIMG()" class="download-btn">
-                  <i class="fa fa-download"></i> Download
+                <button type="button" onClick="downloadExtractedIMG()" class="download-btn" aria-label="Download extracted image">
+                  <i class="fa fa-download" aria-hidden="true"></i> Download
                 </button>
               </div>
             </div>
             
-            <div class="col-md-6">
+            <div class="col-md-6 col-sm-12">
               <div class="result-card">
                 <div class="result-header">
-                  <h3><i class="fa fa-font"></i> Extracted Text</h3>
-                  <div class="result-badge info">Content</div>
+                  <h3><i class="fa fa-font" aria-hidden="true"></i> Extracted Text</h3>
+                  <div class="result-badge info" role="status">Content</div>
                 </div>
                 <div class="text-result-container">
-                  <div id="textResult" class="extracted-text"></div>
+                  <div id="textResult" class="extracted-text" role="region" aria-label="Extracted text content"></div>
                 </div>
               </div>
             </div>
@@ -459,19 +521,19 @@
   </section><!-- #main-content -->
 
   <!--==========================
-    Tips Section
+    Tips Section - Responsive
   ============================-->
-  <section class="tips-section section-padding">
+  <section class="tips-section section-padding" role="region" aria-labelledby="tips-title">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">Tips for Best Results</h2>
+        <h2 id="tips-title" class="section-title">Tips for Best Results</h2>
         <p class="section-description">Follow these guidelines to ensure optimal steganography results</p>
       </div>
       
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-6">
           <div class="tip-card">
-            <div class="tip-icon">
+            <div class="tip-icon" aria-hidden="true">
               <i class="fa fa-image"></i>
             </div>
             <h3>Image Quality</h3>
@@ -479,9 +541,9 @@
           </div>
         </div>
         
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-6">
           <div class="tip-card">
-            <div class="tip-icon">
+            <div class="tip-icon" aria-hidden="true">
               <i class="fa fa-expand"></i>
             </div>
             <h3>Size Compatibility</h3>
@@ -489,9 +551,9 @@
           </div>
         </div>
         
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-12">
           <div class="tip-card">
-            <div class="tip-icon">
+            <div class="tip-icon" aria-hidden="true">
               <i class="fa fa-shield"></i>
             </div>
             <h3>Security</h3>
@@ -502,98 +564,97 @@
     </div>
   </section><!-- #tips -->
 
+  <!--==========================
+    Contact Section - Responsive
+  ============================-->
+  <section id="contact" role="region" aria-labelledby="contact-title">
+    <div class="container">
+      <div class="section-header">
+        <h2 id="contact-title" class="section-title">Contact Us</h2>
+        <p class="section-description">Get in touch with us for any questions or support</p>
+      </div>
 
-
-
-    <!--==========================
-      Contact Section
-    ============================-->
-    <section id="contact">
-      <div class="container">
-        <div class="section-header">
-          <h3 class="section-title">Contact Us</h3>
-          <p class="section-description">Get in touch with us for any questions or support</p>
-        </div>
-
-        <div class="row contact-info">
-          <div class="col-md-4">
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fa fa-phone"></i>
-              </div>
-              <div class="contact-details">
-                <h4>Phone</h4>
-                <p><a href="tel:+918493968288">+91 8493968288</a></p>
-              </div>
+      <div class="row contact-info">
+        <div class="col-md-4 col-sm-6">
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">
+              <i class="fa fa-phone"></i>
             </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fa fa-envelope"></i>
-              </div>
-              <div class="contact-details">
-                <h4>Email</h4>
-                <p><a href="mailto:aishwarya.jagdale@example.com">aishwarya.jagdale@example.com</a></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="contact-item">
-              <div class="contact-icon">
-                <i class="fa fa-map-marker"></i>
-              </div>
-              <div class="contact-details">
-                <h4>Location</h4>
-                <p>Mumbai, Maharashtra, India</p>
-              </div>
+            <div class="contact-details">
+              <h4>Phone</h4>
+              <p><a href="tel:+918493968288" aria-label="Call +91 8493968288">+91 8493968288</a></p>
             </div>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-            <div class="contact-form">
-              <form id="contactForm" role="form">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                </div>
-                <div class="form-group">
-                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                </div>
-                <div class="text-center">
-                  <button type="submit" class="contact-btn">Send Message</button>
-                </div>
-              </form>
+        <div class="col-md-4 col-sm-6">
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">
+              <i class="fa fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Email</h4>
+              <p><a href="mailto:aishwarya.jagdale@example.com" aria-label="Email aishwarya.jagdale@example.com">aishwarya.jagdale@example.com</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+          <div class="contact-item">
+            <div class="contact-icon" aria-hidden="true">
+              <i class="fa fa-map-marker"></i>
+            </div>
+            <div class="contact-details">
+              <h4>Location</h4>
+              <p>Mumbai, Maharashtra, India</p>
             </div>
           </div>
         </div>
       </div>
-    </section><!-- #contact -->
 
-  </main>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-12">
+          <div class="contact-form">
+            <form id="contactForm" role="form" aria-label="Contact form">
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label for="name" class="sr-only">Your Name</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required aria-required="true">
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <label for="email" class="sr-only">Your Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required aria-required="true">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="subject" class="sr-only">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required aria-required="true">
+              </div>
+              <div class="form-group">
+                <label for="message" class="sr-only">Message</label>
+                <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required aria-required="true"></textarea>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="contact-btn" aria-label="Send message">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><!-- #contact -->
 
   <!--==========================
-    Footer
+    Footer - Responsive
   ============================-->
-  <footer id="footer">
+  <footer id="footer" role="contentinfo">
     <div class="footer-top">
       <div class="container">
-
+        <!-- Additional footer content can go here -->
       </div>
     </div>
 
@@ -602,17 +663,15 @@
         &copy; Copyright <strong>Aishwarya Jagdale</strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <!--
-          All the links in the footer should remain intact.
-          You can delete the links only if you purchased the pro version.
-          Licensing information: https://bootstrapmade.com/license/
-          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Regna
-        -->
+        Made with ❤️ by AS Infotech
       </div>
     </div>
   </footer><!-- #footer -->
 
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- Back to Top Button -->
+  <a href="#hero" class="back-to-top" aria-label="Back to top">
+    <i class="fa fa-chevron-up" aria-hidden="true"></i>
+  </a>
 
   <!-- JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
@@ -631,6 +690,51 @@
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
 
+  <!-- ✨ NEW: Responsive JavaScript - Add this line -->
+  <script src="js/responsive.js"></script>
   
+  <!-- Page Load Handler -->
+  <script>
+    // Hide page loader when everything is loaded
+    window.addEventListener('load', function() {
+      document.body.classList.add('loaded');
+      const loader = document.getElementById('pageLoader');
+      if (loader) {
+        setTimeout(() => {
+          loader.classList.add('hidden');
+          setTimeout(() => loader.remove(), 300);
+        }, 300);
+      }
+      
+      // Initialize cover image
+      if (typeof loadCover === 'function') {
+        loadCover();
+      }
+    });
+    
+    // Fallback: Remove loader after 5 seconds
+    setTimeout(function() {
+      const loader = document.getElementById('pageLoader');
+      if (loader) {
+        loader.classList.add('hidden');
+        setTimeout(() => loader.remove(), 300);
+      }
+      document.body.classList.add('loaded');
+    }, 5000);
+  </script>
+  
+  <!-- Service Worker Registration (Optional - for PWA) -->
+  <script>
+    // Uncomment to enable Progressive Web App features
+    /*
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('Service Worker registered'))
+          .catch(err => console.log('Service Worker registration failed:', err));
+      });
+    }
+    */
+  </script>
 </body>
 </html>
