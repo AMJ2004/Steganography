@@ -130,15 +130,33 @@ function initSmoothScroll() {
  */
 function scrollToSection(sectionId) {
   const section = document.getElementById(sectionId);
-  if (section) {
-    const headerHeight = document.getElementById('header')?.offsetHeight || 80;
-    const targetPosition = section.offsetTop - headerHeight;
+  if (!section) {
+    console.warn('Section not found:', sectionId);
+    return false;
+  }
+  
+  try {
+    const header = document.getElementById('header');
+    const headerHeight = header ? header.offsetHeight : 80;
+    const targetPosition = section.offsetTop - headerHeight - 10;
     
     window.scrollTo({
-      top: targetPosition,
+      top: Math.max(0, targetPosition),
       behavior: 'smooth'
     });
-    closeMobileMenu();
+    
+    // Close mobile menu if open
+    const body = document.body;
+    if (body.classList.contains('mobile-nav-active')) {
+      closeMobileMenu();
+    }
+    
+    // Add focus to section for accessibility
+    section.focus();
+    return true;
+  } catch (error) {
+    console.error('Error scrolling to section:', error);
+    return false;
   }
 }
 
@@ -224,6 +242,48 @@ function initTextCounter() {
       charCount.textContent = this.value.length;
     });
   }
+}
+
+// ============================================
+// UPLOAD AREA CLICK HANDLERS
+// ============================================
+
+function initUploadHandlers() {
+  // Map of upload areas to their corresponding file inputs
+  const uploadMappings = [
+    { areaId: 'hideIMG', uploadArea: null },
+    { areaId: 'inthisIMG', uploadArea: null },
+    { areaId: 'extractIMG', uploadArea: null }
+  ];
+
+  uploadMappings.forEach(mapping => {
+    const fileInput = document.getElementById(mapping.areaId);
+    if (!fileInput) return;
+
+    // Find parent upload-area
+    const uploadArea = fileInput.closest('.upload-area');
+    if (!uploadArea) return;
+
+    // Add click handler to upload-area
+    uploadArea.addEventListener('click', function(e) {
+      // Prevent triggering if clicking on file info remove button
+      if (e.target.closest('.remove-file')) {
+        return;
+      }
+      fileInput.click();
+    });
+
+    // Improve keyboard accessibility
+    uploadArea.setAttribute('role', 'button');
+    uploadArea.setAttribute('tabindex', '0');
+    
+    uploadArea.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        fileInput.click();
+      }
+    });
+  });
 }
 
 // ============================================
@@ -506,6 +566,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initDarkMode();
   initForms();
   initTextCounter();
+  initUploadHandlers();
   initScrollReveal();
   initStatCounter();
   initA11y();
